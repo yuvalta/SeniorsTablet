@@ -72,11 +72,15 @@ public class AnsweringFragment extends Fragment {
     private void performClick() {
         try {
             Notification notification = ShareDataSingleton.getInstance().getNotification();
-            if (notification.actions != null) {
-                notification.actions[1].actionIntent.send();
+            if (notification != null) {
+                if (notification.actions != null) {
+                    notification.actions[1].actionIntent.send();
+                }
             }
         } catch (PendingIntent.CanceledException e) {
             e.printStackTrace();
+        } finally {
+            closeFragment();
         }
     }
 
@@ -90,10 +94,14 @@ public class AnsweringFragment extends Fragment {
     View.OnClickListener declineClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            FragmentManager fm = getFragmentManager();
-            if (fm.getBackStackEntryCount() > 0) {
-                fm.popBackStack();
-            }
+            closeFragment();
         }
     };
+
+    private void closeFragment() {
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+        }
+    }
 }
