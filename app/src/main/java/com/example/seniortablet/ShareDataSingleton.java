@@ -9,6 +9,7 @@ class ShareDataSingleton {
     public static final int NOTIFICATION_REMOVED = 1;
 
     Notification notification;
+    boolean isConnected = false;
 
     static ShareDataSingleton getInstance() {
         return ourInstance;
@@ -24,5 +25,13 @@ class ShareDataSingleton {
 
     public void setNotification(Notification notification) {
         this.notification = notification;
+    }
+
+    public boolean isConnected() {
+        return isConnected;
+    }
+
+    public void setConnected(boolean connected) {
+        isConnected = connected;
     }
 }

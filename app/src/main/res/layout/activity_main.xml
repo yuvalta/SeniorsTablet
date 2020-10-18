@@ -7,7 +7,7 @@
     android:keepScreenOn="true"
     tools:context=".MainActivity"
     android:id="@+id/main_background"
-    android:background="@color/background_color" >
+    android:background="@color/background_color">
 
     <LinearLayout
         android:padding="20dp"
@@ -29,19 +29,36 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
+            android:background="@android:color/darker_gray" />
 
-        <TextView
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
+        <LinearLayout
+            android:gravity="bottom"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:textSize="60sp"
-            android:textColor="@color/text_color"
-            android:textStyle="bold"
-            android:id="@+id/date_tv" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="50"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="60sp"
+                android:textColor="@color/text_color"
+                android:textStyle="bold"
+                android:id="@+id/date_tv" />
+
+            <ImageView
+                android:id="@+id/connection_indicator"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:layout_width="0dp"
+                android:layout_height="15dp" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

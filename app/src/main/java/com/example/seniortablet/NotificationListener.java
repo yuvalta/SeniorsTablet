@@ -24,6 +24,8 @@ public class NotificationListener extends NotificationListenerService {
     @Override
     public void onListenerConnected() {
         Log.i(TAG, "Notification Listener connected");
+        sendMessage("", "", "CONNECTED");
+        ShareDataSingleton.getInstance().setConnected(true); // set flag connected tru singleton
     }
 
     @Override
@@ -42,21 +44,20 @@ public class NotificationListener extends NotificationListenerService {
         Log.i(TAG, "From: " + from);
         Log.i(TAG, "Message: " + message);
 
-        sendMessage(message, from, ShareDataSingleton.getInstance().NOTIFICATION_POSTED);
+        sendMessage(message, from, "INCOMING_VIDEO");
     }
 
     @Override
     public void onNotificationRemoved(StatusBarNotification sbn) {
-        sendMessage("", "", ShareDataSingleton.getInstance().NOTIFICATION_REMOVED);
+        sendMessage("", "", "NOTIFICATION_REMOVED");
     }
 
-    private void sendMessage(String message, String name, int notificationEvent) {
+    private void sendMessage(String message, String name, String action) {
         Log.d("sender", "start sending");
-        Intent intent = new Intent("INCOMING_VIDEO");
+        Intent intent = new Intent(action);
 
         intent.putExtra("message", message);
         intent.putExtra("name", name);
-        intent.putExtra("type", notificationEvent);
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
