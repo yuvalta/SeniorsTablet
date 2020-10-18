@@ -1,22 +1,21 @@
 package com.example.seniortablet;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.BounceInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +26,7 @@ public class AnsweringFragment extends Fragment {
     private static final String CALLER = "caller";
     private String callerName;
 
-    TextView callerNameTV;
+    TextView callerNameTV, staticCallingTV;
     RelativeLayout answerLayout, declineLayout;
 
     View v;
@@ -64,13 +63,26 @@ public class AnsweringFragment extends Fragment {
         callerNameTV = v.findViewById(R.id.who_calling);
         answerLayout = v.findViewById(R.id.answer_layout);
         declineLayout = v.findViewById(R.id.decline_layout);
+        staticCallingTV = v.findViewById(R.id.calling_fixed_text);
 
         callerNameTV.setText(callerName);
+
+        startBounceAnimation(callerNameTV);
+        startBounceAnimation(staticCallingTV);
 
         answerLayout.setOnClickListener(answerClick);
         declineLayout.setOnClickListener(declineClick);
 
         return v;
+    }
+
+    private void startBounceAnimation(TextView tv) {
+        ObjectAnimator animY = ObjectAnimator.ofFloat(tv, "translationY", -50f, 0f);
+        animY.setDuration(1500);//1sec
+        animY.setInterpolator(new BounceInterpolator());
+        animY.setRepeatMode(ValueAnimator.REVERSE);
+        animY.setRepeatCount(100);
+        animY.start();
     }
 
 
