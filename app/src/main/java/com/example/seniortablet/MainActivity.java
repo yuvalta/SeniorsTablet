@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -96,12 +97,22 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String message = intent.getStringExtra("message");
-            String caller = intent.getStringExtra("name");
+            Log.i("UV", "test");
+            // notification appears
+//            if (intent.getStringExtra("type").equals(ShareDataSingleton.getInstance().NOTIFICATION_POSTED)) {
 
-            Log.i("UV", "Got message: " + message);
+                String message = intent.getStringExtra("message");
+                String caller = intent.getStringExtra("name");
 
-            openAnswerScreen(message, caller);
+                Log.i("UV", "Got message: " + message);
+
+                openAnswerScreen(message, caller);
+//            }
+//            else { // notification removed
+                for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+                    getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                }
+//            }
         }
     };
 

@@ -5,6 +5,8 @@ import android.app.Notification;
 class ShareDataSingleton {
     private static final ShareDataSingleton ourInstance = new ShareDataSingleton();
     public static final String WA_PACKAGE = "com.whatsapp";
+    public static final int NOTIFICATION_POSTED = 0;
+    public static final int NOTIFICATION_REMOVED = 1;
 
     Notification notification;
 

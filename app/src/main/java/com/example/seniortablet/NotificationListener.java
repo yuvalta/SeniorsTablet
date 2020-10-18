@@ -42,15 +42,21 @@ public class NotificationListener extends NotificationListenerService {
         Log.i(TAG, "From: " + from);
         Log.i(TAG, "Message: " + message);
 
-        sendMessage(message, from);
+        sendMessage(message, from, ShareDataSingleton.getInstance().NOTIFICATION_POSTED);
     }
 
-    private void sendMessage(String message, String name) {
+    @Override
+    public void onNotificationRemoved(StatusBarNotification sbn) {
+        sendMessage("", "", ShareDataSingleton.getInstance().NOTIFICATION_REMOVED);
+    }
+
+    private void sendMessage(String message, String name, int notificationEvent) {
         Log.d("sender", "start sending");
         Intent intent = new Intent("INCOMING_VIDEO");
 
         intent.putExtra("message", message);
         intent.putExtra("name", name);
+        intent.putExtra("type", notificationEvent);
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }

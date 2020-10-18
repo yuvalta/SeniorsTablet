@@ -59,7 +59,6 @@ public class AnsweringFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         v = inflater.inflate(R.layout.fragment_answering, container, false);
 
         callerNameTV = v.findViewById(R.id.who_calling);
