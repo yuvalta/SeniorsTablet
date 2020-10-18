@@ -2,6 +2,10 @@ package com.example.seniortablet;
 
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -47,6 +51,8 @@ public class AnsweringFragment extends Fragment {
         if (getArguments() != null) {
             callerName = getArguments().getString(CALLER);
         }
+
+//        getCallerIcon();
     }
 
     @Override
@@ -76,12 +82,39 @@ public class AnsweringFragment extends Fragment {
                 if (notification.actions != null) {
                     notification.actions[1].actionIntent.send();
                 }
+            } else {
+                Toast.makeText(getContext(), "אין התראה", Toast.LENGTH_SHORT).show();
             }
         } catch (PendingIntent.CanceledException e) {
+            Toast.makeText(getContext(), "תקלה בלחיצה", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         } finally {
             closeFragment();
         }
+    }
+
+    private void getCallerIcon() {
+        Bundle extras = ShareDataSingleton.getInstance().getNotification().extras;
+        int iconId = extras.getInt(Notification.EXTRA_SMALL_ICON);
+
+        try {
+            PackageManager manager = getContext().getPackageManager();
+            Resources resources = manager.getResourcesForApplication(ShareDataSingleton.getInstance().WA_PACKAGE);
+
+            Drawable icon = resources.getDrawable(iconId);
+
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        if (extras.containsKey(Notification.EXTRA_PICTURE)) {
+//            // this bitmap contain the picture attachment
+//            Bitmap bmp = (Bitmap) extras.get(Notification.EXTRA_PICTURE);
+//        }
+
     }
 
     View.OnClickListener answerClick = new View.OnClickListener() {

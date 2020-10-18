@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -31,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
     Calendar currentTime;
     FragmentManager fragmentManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mainBackground = findViewById(R.id.main_background);
         dateTV = findViewById(R.id.date_tv);
 
@@ -45,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         setDateAndBackground();
 
-        registerBroadcastForTime();
+//        hideNavigationBar();
+
+//        registerBroadcastForTime();
 
         if (isNotificationServiceEnabled()) {
             Intent intent = new Intent(ACTION_NOTIFICATION_LISTENER_SETTINGS);
@@ -55,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter("INCOMING_VIDEO"));
 
-        openAnswerScreen("", "יובל");
+//        openAnswerScreen("", "יובל");
+    }
 
+    private void hideNavigationBar() {
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     private void registerBroadcastForTime() {
@@ -75,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setDateAndBackground() {
-        mainBackground.setBackground(currentTime.get(Calendar.HOUR_OF_DAY) >= 18 ? getDrawable(R.drawable.night) : getDrawable(R.drawable.day));
+//        mainBackground.setBackground(currentTime.get(Calendar.HOUR_OF_DAY) >= 18 ? getDrawable(R.drawable.night) : getDrawable(R.drawable.day));
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String currentDateandTime = sdf.format(new Date());
@@ -97,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void openAnswerScreen(String message, String caller) { // opens the fragment screen
 
-//        if (message.contains("שיחת וידאו נכנסת")) {
+        try {
+//        if (message.contains(getString(R.string.video_message_id))) {
             if (fragmentManager.getBackStackEntryCount() == 0) {
                 AnsweringFragment fragment = AnsweringFragment.newInstance(caller);
 
@@ -107,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
             }
 //        }
+//        else {
+//            Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
+//       }
+        } catch (Exception e) {
+            Toast.makeText(this, "בעיה בפתיחת מסך צלצול", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean isNotificationServiceEnabled() { // checks if we allowed notifications

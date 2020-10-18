@@ -20,7 +20,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 public class NotificationListener extends NotificationListenerService {
 
     private static final String TAG = "UV";
-    private static final String WA_PACKAGE = "com.whatsapp";
 
     @Override
     public void onListenerConnected() {
@@ -29,7 +28,7 @@ public class NotificationListener extends NotificationListenerService {
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        if (!sbn.getPackageName().equals(WA_PACKAGE)) return;
+        if (!sbn.getPackageName().equals(ShareDataSingleton.getInstance().WA_PACKAGE)) return;
 
         Notification notification = sbn.getNotification();
 
@@ -49,7 +48,7 @@ public class NotificationListener extends NotificationListenerService {
     private void sendMessage(String message, String name) {
         Log.d("sender", "start sending");
         Intent intent = new Intent("INCOMING_VIDEO");
-        // You can also include some extra data.
+
         intent.putExtra("message", message);
         intent.putExtra("name", name);
 
