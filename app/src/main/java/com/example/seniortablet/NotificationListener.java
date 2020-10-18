@@ -58,6 +58,7 @@ public class NotificationListener extends NotificationListenerService {
 
         intent.putExtra("message", message);
         intent.putExtra("name", name);
+        intent.setAction(action);
 
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }

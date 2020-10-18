@@ -99,8 +99,9 @@ public class MainActivity extends AppCompatActivity {
             _broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context ctx, Intent intent) {
-                    if (intent.getAction().compareTo(Intent.ACTION_TIME_TICK) == 0)
+                    if (intent.getAction().compareTo(Intent.ACTION_TIME_TICK) == 0) {
                         changeIndicator(true);
+                    }
                 }
             };
 
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.i("UV", "test");
+                Log.i("UV", "mMessageReceiver");
 
                 String message = intent.getStringExtra("message");
                 String caller = intent.getStringExtra("name");
@@ -136,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mConnectioneReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.i("UV", "mConnectioneReceiver");
             changeIndicator(true);
         }
     };
@@ -143,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver mDismissReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.i("UV", "mDismissReceiver");
             for (Fragment fragment : getSupportFragmentManager().getFragments()) {
                 getSupportFragmentManager().beginTransaction().remove(fragment).commit();
             }
