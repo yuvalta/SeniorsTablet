@@ -69,19 +69,36 @@ public class MainActivity extends AppCompatActivity {
 
         registerBroadcastForTime();
 
-        if (isNotificationServiceEnabled()) { // TODO: FIX THIS!
+        setLocalBroadcasts();
+
+//        openAnswerScreen("", "יובל");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (!isNotificationServiceEnabled()) {
+            openInstructionsForPremission();
+
             Intent intent = new Intent(ACTION_NOTIFICATION_LISTENER_SETTINGS);
             startActivity(intent);
         }
+    }
 
+    private void openInstructionsForPremission() {
+
+    }
+
+    private void setLocalBroadcasts() {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter(ShareDataSingleton.INCOMING_VIDEO));
         LocalBroadcastManager.getInstance(this).registerReceiver(mConnectioneReceiver,
                 new IntentFilter(ShareDataSingleton.CONNECTED));
         LocalBroadcastManager.getInstance(this).registerReceiver(mDismissReceiver,
                 new IntentFilter(ShareDataSingleton.NOTIFICATION_REMOVED));
-
-//        openAnswerScreen("", "יובל");
+        LocalBroadcastManager.getInstance(this).registerReceiver(mDisconnectedReceiver,
+                new IntentFilter(ShareDataSingleton.DISCONNECTED));
     }
 
     private void stopBlinkingAnimation() {
@@ -148,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
             String caller = intent.getStringExtra("name");
 
             Log.i("UV", "Got message: " + message);
+            Log.i("UV", "caller  " + caller);
 
             openAnswerScreen(message, caller);
         }
@@ -173,40 +191,43 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private BroadcastReceiver mDisconnectedReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.i("UV", "mDisconnectedReceiver");
+            changeIndicator(false);
+            startBlinkingLedAnimation();
+        }
+    };
+
     private void openAnswerScreen(String message, String caller) { // opens the fragment screen
 
         try {
-//        if (message.contains(getString(R.string.video_message_id))) {
-            if (fragmentManager.getBackStackEntryCount() == 0) {
-                AnsweringFragment fragment = AnsweringFragment.newInstance(caller);
+            if (message.contains(getString(R.string.video_message_id))) {
+                if (fragmentManager.getBackStackEntryCount() == 0) {
+                    AnsweringFragment fragment = AnsweringFragment.newInstance(caller);
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment, fragment, "calling");
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.add(R.id.fragment, fragment, "calling");
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            } else {
+                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
             }
-//        }
-//        else {
-//            Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
-//       }
         } catch (Exception e) {
             Toast.makeText(this, "בעיה בפתיחת מסך צלצול", Toast.LENGTH_SHORT).show();
         }
     }
 
     private boolean isNotificationServiceEnabled() { // checks if we allowed notifications
-        String pkgName = getPackageName();
-        final String flat = Settings.Secure.getString(getContentResolver(),
-                "ENABLED_NOTIFICATION_LISTENERS");
-        if (!TextUtils.isEmpty(flat)) {
-            final String[] names = flat.split(":");
-            for (String name : names) {
-                final ComponentName cn = ComponentName.unflattenFromString(name);
-                if (cn != null) {
-                    if (TextUtils.equals(pkgName, cn.getPackageName())) {
-                        return true;
-                    }
-                }
+        String theList = android.provider.Settings.Secure.getString(getContentResolver(), "enabled_notification_listeners");
+        String[] theListList = theList.split(":");
+        String me = (new ComponentName(this, NotificationListener.class)).flattenToString();
+
+        for (String next : theListList) {
+            if (me.equals(next)) {
+                return true;
             }
         }
         return false;

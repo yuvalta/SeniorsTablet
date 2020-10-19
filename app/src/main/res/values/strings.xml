@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SeniorTablet</string>
+    <string name="app_name">Connect</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="video_message_id">שיחת וידאו נכנסת</string>

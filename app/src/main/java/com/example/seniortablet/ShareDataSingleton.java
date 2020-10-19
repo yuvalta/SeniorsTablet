@@ -9,6 +9,7 @@ class ShareDataSingleton {
     public static final String NOTIFICATION_REMOVED = "NOTIFICATION_REMOVED";
     public static final String CONNECTED = "CONNECTED";
     public static final String INCOMING_VIDEO = "INCOMING_VIDEO";
+    public static final String DISCONNECTED = "DISCONNECTED";
 
     Notification notification;
     boolean isConnected = false;

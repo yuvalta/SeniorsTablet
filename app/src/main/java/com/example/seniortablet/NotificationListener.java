@@ -1,18 +1,11 @@
 package com.example.seniortablet;
 
-import android.app.Activity;
 import android.app.Notification;
-import android.app.PendingIntent;
-import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -24,7 +17,7 @@ public class NotificationListener extends NotificationListenerService {
     @Override
     public void onListenerConnected() {
         Log.i(TAG, "Notification Listener connected");
-        sendMessage("", "", "CONNECTED");
+        sendMessage("", "", ShareDataSingleton.CONNECTED);
         ShareDataSingleton.getInstance().setConnected(true); // set flag connected tru singleton
     }
 
@@ -44,12 +37,18 @@ public class NotificationListener extends NotificationListenerService {
         Log.i(TAG, "From: " + from);
         Log.i(TAG, "Message: " + message);
 
-        sendMessage(message, from, "INCOMING_VIDEO");
+        sendMessage(message, from, ShareDataSingleton.INCOMING_VIDEO);
     }
 
     @Override
     public void onNotificationRemoved(StatusBarNotification sbn) {
-        sendMessage("", "", "NOTIFICATION_REMOVED");
+        sendMessage("", "", ShareDataSingleton.NOTIFICATION_REMOVED);
+    }
+
+    @Override
+    public void onListenerDisconnected() {
+        sendMessage("", "", ShareDataSingleton.DISCONNECTED);
+        ShareDataSingleton.getInstance().setConnected(false);
     }
 
     private void sendMessage(String message, String name, String action) {
