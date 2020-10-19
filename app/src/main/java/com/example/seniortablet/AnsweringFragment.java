@@ -60,12 +60,12 @@ public class AnsweringFragment extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_answering, container, false);
 
-        callerNameTV = v.findViewById(R.id.who_calling);
+//        callerNameTV = v.findViewById(R.id.who_calling);
         answerLayout = v.findViewById(R.id.answer_layout);
         declineLayout = v.findViewById(R.id.decline_layout);
         staticCallingTV = v.findViewById(R.id.calling_fixed_text);
 
-        callerNameTV.setText(callerName);
+        staticCallingTV.setText(String.format(getString(R.string.whos_calling),callerName));
 
         startBounceAnimation(callerNameTV);
         startBounceAnimation(staticCallingTV);
@@ -120,12 +120,6 @@ public class AnsweringFragment extends Fragment {
         catch (Exception e) {
             e.printStackTrace();
         }
-
-//        if (extras.containsKey(Notification.EXTRA_PICTURE)) {
-//            // this bitmap contain the picture attachment
-//            Bitmap bmp = (Bitmap) extras.get(Notification.EXTRA_PICTURE);
-//        }
-
     }
 
     View.OnClickListener answerClick = new View.OnClickListener() {

@@ -5,8 +5,10 @@ import android.app.Notification;
 class ShareDataSingleton {
     private static final ShareDataSingleton ourInstance = new ShareDataSingleton();
     public static final String WA_PACKAGE = "com.whatsapp";
-    public static final int NOTIFICATION_POSTED = 0;
-    public static final int NOTIFICATION_REMOVED = 1;
+
+    public static final String NOTIFICATION_REMOVED = "NOTIFICATION_REMOVED";
+    public static final String CONNECTED = "CONNECTED";
+    public static final String INCOMING_VIDEO = "INCOMING_VIDEO";
 
     Notification notification;
     boolean isConnected = false;

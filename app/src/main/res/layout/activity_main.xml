@@ -51,6 +51,7 @@
                 android:id="@+id/date_tv" />
 
             <ImageView
+                android:background="@drawable/led_circle_green"
                 android:id="@+id/connection_indicator"
                 android:layout_weight="1"
                 android:padding="5dp"
