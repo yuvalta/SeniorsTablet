@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -41,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView connectionIndicator;
     Animation animation;
 
+    boolean inIntro = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
         setDateAndBackground();
 
-//        hideNavigationBar();
-
         registerBroadcastForTime();
 
         setLocalBroadcasts();
+
+//        openInstructionsForPremission();
 
 //        openAnswerScreen("", "יובל");
     }
@@ -81,13 +81,20 @@ public class MainActivity extends AppCompatActivity {
         if (!isNotificationServiceEnabled()) {
             openInstructionsForPremission();
 
-            Intent intent = new Intent(ACTION_NOTIFICATION_LISTENER_SETTINGS);
-            startActivity(intent);
+
         }
     }
 
     private void openInstructionsForPremission() {
 
+        if (fragmentManager.getBackStackEntryCount() == 0) {
+            IntroFragment fragment = IntroFragment.newInstance();
+
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fragment, fragment, "intro");
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
     }
 
     private void setLocalBroadcasts() {
@@ -185,8 +192,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.i("UV", "mDismissReceiver");
-            for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-                getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+            if (!inIntro) {
+                for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+                    getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                }
             }
         }
     };

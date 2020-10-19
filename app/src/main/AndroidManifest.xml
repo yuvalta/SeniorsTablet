@@ -17,9 +17,8 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="landscape">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="landscape" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

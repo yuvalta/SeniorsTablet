@@ -60,7 +60,6 @@ public class AnsweringFragment extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_answering, container, false);
 
-//        callerNameTV = v.findViewById(R.id.who_calling);
         answerLayout = v.findViewById(R.id.answer_layout);
         declineLayout = v.findViewById(R.id.decline_layout);
         staticCallingTV = v.findViewById(R.id.calling_fixed_text);
