@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3">
+        android:layout_weight="2">
 
         <TextView
             app:autoSizeTextType="uniform"
@@ -32,7 +32,7 @@
             android:id="@+id/flat_intro_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/flat_0_nobg" />
+            android:src="@drawable/per_inst" />
 
 
     </RelativeLayout>
@@ -40,7 +40,7 @@
     <ImageView
         android:layout_weight="2"
         android:id="@+id/permissions"
-        android:src="@drawable/per_inst"
+        android:src="@drawable/flat_0_nobg"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
