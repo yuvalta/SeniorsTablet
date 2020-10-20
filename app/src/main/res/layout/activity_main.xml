@@ -16,6 +16,7 @@
         android:layout_height="match_parent">
 
         <TextClock
+            android:fontFamily="@font/rubik"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:layout_weight="2"
@@ -39,6 +40,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/rubik"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"

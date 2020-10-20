@@ -16,14 +16,14 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3">
+        android:layout_weight="4">
 
         <TextView
             app:autoSizeTextType="uniform"
             app:autoSizeMinTextSize="12sp"
             app:autoSizeMaxTextSize="30sp"
             app:autoSizeStepGranularity="2sp"
-            android:fontFamily="@font/suez_one"
+            android:fontFamily="@font/rubik"
             android:paddingHorizontal="10dp"
             android:id="@+id/inst_text_intro_0"
             android:layout_width="match_parent"
@@ -34,11 +34,14 @@
             android:gravity="center_horizontal" />
 
         <ImageView
+
             android:layout_below="@id/inst_text_intro_0"
             android:layout_gravity="bottom"
             android:id="@+id/flat_intro_0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:layout_marginEnd="-30dp"
             android:src="@drawable/flat_1_nobg" />
 
 

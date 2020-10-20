@@ -17,7 +17,7 @@
             app:autoSizeMinTextSize="12sp"
             app:autoSizeMaxTextSize="30sp"
             app:autoSizeStepGranularity="2sp"
-            android:fontFamily="@font/suez_one"
+            android:fontFamily="@font/rubik"
             android:id="@+id/inst_text_intro_0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
