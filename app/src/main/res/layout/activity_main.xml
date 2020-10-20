@@ -42,8 +42,7 @@
             <TextView
                 android:fontFamily="@font/rubik"
                 android:layout_marginTop="30dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_weight="50"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

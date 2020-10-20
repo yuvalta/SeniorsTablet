@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         setLocalBroadcasts();
 
-        openInstructionsForPremission();
+//        openInstructionsForPremission();
 
 //        openAnswerScreen("", "יובל");
     }
