@@ -2,23 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_color"
-    android:orientation="horizontal">
+
+    android:orientation="vertical">
 
     <TextView
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeMaxTextSize="30sp"
+        app:autoSizeStepGranularity="2sp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:fontFamily="@font/suez_one"
         android:id="@+id/inst_text_intro_0"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="aaa"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/green_led_explain"
         android:textSize="30sp"
-        android:textColor="@color/text_color"
-        android:gravity="center_horizontal" />
+        android:textColor="@color/text_color" />
 
     <ImageView
+        android:layout_weight="4"
         android:src="@drawable/green_led_inst"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_toEndOf="@id/inst_text_intro_0" />
+        android:layout_height="0dp" />
 
 
 </LinearLayout>
