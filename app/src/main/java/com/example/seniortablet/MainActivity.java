@@ -27,8 +27,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import static android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS;
-
 public class MainActivity extends AppCompatActivity {
 
     TextView dateTV;
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         setDateAndBackground();
 
-        registerBroadcastForTime();
+//        registerBroadcastForTime();
 
         setLocalBroadcasts();
 
@@ -81,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         if (!isNotificationServiceEnabled()) {
             openInstructionsForPremission();
 
-
         }
+        inIntro = false;
     }
 
     private void openInstructionsForPremission() {
@@ -155,8 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setDateAndBackground() {
-//            mainBackground.setBackground(currentTime.get(Calendar.HOUR_OF_DAY) >= 18 ? getDrawable(R.drawable.night) : getDrawable(R.drawable.day));
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String currentDateandTime = sdf.format(new Date());
 
@@ -212,18 +208,18 @@ public class MainActivity extends AppCompatActivity {
     private void openAnswerScreen(String message, String caller) { // opens the fragment screen
 
         try {
-            if (message.contains(getString(R.string.video_message_id))) {
-                if (fragmentManager.getBackStackEntryCount() == 0) {
-                    AnsweringFragment fragment = AnsweringFragment.newInstance(caller);
+//            if (message.contains(getString(R.string.video_message_id))) {
+            if (fragmentManager.getBackStackEntryCount() == 0) {
+                AnsweringFragment fragment = AnsweringFragment.newInstance(caller);
 
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(R.id.fragment, fragment, "calling");
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-            } else {
-                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.fragment, fragment, "calling");
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
+//            } else {
+//                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
+//            }
         } catch (Exception e) {
             Toast.makeText(this, "בעיה בפתיחת מסך צלצול", Toast.LENGTH_SHORT).show();
         }

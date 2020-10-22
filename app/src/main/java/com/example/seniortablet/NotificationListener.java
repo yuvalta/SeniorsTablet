@@ -23,7 +23,11 @@ public class NotificationListener extends NotificationListenerService {
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        if (!sbn.getPackageName().equals(ShareDataSingleton.getInstance().WA_PACKAGE)) return;
+        Log.i("TAG", "before if");
+        if (!sbn.getPackageName().equals(ShareDataSingleton.getInstance().WA_PACKAGE)) {
+            Log.i("TAG", "in if");
+            return;
+        }
 
         Notification notification = sbn.getNotification();
 

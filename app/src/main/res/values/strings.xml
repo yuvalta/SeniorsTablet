@@ -8,4 +8,10 @@
     <string name="accept">לחצו על \"קבל\" - האפליקציה אך ורק רואה התראות של שיחות וידאו</string>
     <string name="red_led_explain">נורה אדומה מהבהבת מסמלת שהאפליקציה מתחברת לשירות ההתראות של WhatsApp</string>
     <string name="green_led_explain">נורה ירוקה מסמלת שהכל תקין</string>
+    <string name="title_activity_whos_calling">WhosCallingActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>
