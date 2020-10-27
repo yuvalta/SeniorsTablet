@@ -22,7 +22,7 @@ import static android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS;
 public class IntroFragment extends Fragment {
 
     ImageButton backButton, continueButton, finishButton;
-    ImageView dot0, dot1, dot2, dot3;
+    ImageView dot0, dot1, dot2, dot3, dot00;
     FrameLayout includeLayout;
 
     LayoutInflater inflater;
@@ -62,11 +62,13 @@ public class IntroFragment extends Fragment {
         finishButton = v.findViewById(R.id.finish_button);
         includeLayout = v.findViewById(R.id.include_holder);
 
+        dot00 = v.findViewById(R.id.dot_00);
         dot0 = v.findViewById(R.id.dot_0);
         dot1 = v.findViewById(R.id.dot_1);
         dot2 = v.findViewById(R.id.dot_2);
         dot3 = v.findViewById(R.id.dot_3);
 
+        dotsList.add(dot00);
         dotsList.add(dot0);
         dotsList.add(dot1);
         dotsList.add(dot2);
@@ -96,7 +98,7 @@ public class IntroFragment extends Fragment {
                 continueButton.setVisibility(View.VISIBLE);
                 finishButton.setVisibility(View.INVISIBLE);
 
-                layoutInflater(inflater, R.layout.intro_0);
+                layoutInflater(inflater, R.layout.intro_00);
                 changeDotPosition(pageCounter);
 
                 break;
@@ -106,7 +108,7 @@ public class IntroFragment extends Fragment {
                 continueButton.setVisibility(View.VISIBLE);
                 finishButton.setVisibility(View.INVISIBLE);
 
-                layoutInflater(inflater, R.layout.intro_1);
+                layoutInflater(inflater, R.layout.intro_0);
                 changeDotPosition(pageCounter);
 
                 break;
@@ -116,12 +118,22 @@ public class IntroFragment extends Fragment {
                 continueButton.setVisibility(View.VISIBLE);
                 finishButton.setVisibility(View.INVISIBLE);
 
-                layoutInflater(inflater, R.layout.intro_2);
+                layoutInflater(inflater, R.layout.intro_1);
                 changeDotPosition(pageCounter);
 
                 break;
             }
             case 3: {
+                backButton.setVisibility(View.VISIBLE);
+                continueButton.setVisibility(View.VISIBLE);
+                finishButton.setVisibility(View.INVISIBLE);
+
+                layoutInflater(inflater, R.layout.intro_2);
+                changeDotPosition(pageCounter);
+
+                break;
+            }
+            case 4: {
                 continueButton.setVisibility(View.INVISIBLE);
                 finishButton.setVisibility(View.VISIBLE);
 

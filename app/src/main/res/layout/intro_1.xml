@@ -4,46 +4,38 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_color"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_weight="2"
-        android:id="@+id/permissions"
-        android:src="@drawable/accept_inst"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4">
-
-        <TextView
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="12sp"
-            app:autoSizeMaxTextSize="30sp"
-            app:autoSizeStepGranularity="2sp"
-            android:fontFamily="@font/rubik"
-            android:paddingHorizontal="10dp"
-            android:id="@+id/inst_text_intro_0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/accept"
-            android:textSize="30sp"
-            android:textColor="@color/text_color"
-            android:gravity="center_horizontal" />
+    <FrameLayout
+        android:elevation="8dp"
+        android:background="@color/orange_background"
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
 
         <ImageView
-
-            android:layout_below="@id/inst_text_intro_0"
-            android:layout_gravity="bottom"
-            android:id="@+id/flat_intro_0"
+            android:layout_margin="20sp"
+            android:id="@+id/permissions"
+            android:src="@drawable/note_background_edited"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:layout_marginEnd="-30dp"
-            android:src="@drawable/flat_1_nobg" />
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_weight="1"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeMaxTextSize="30sp"
+        app:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/rubik"
+        android:paddingHorizontal="10dp"
+        android:id="@+id/inst_text_intro_0"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/accept"
+        android:textSize="30sp"
+        android:textColor="@color/text_color"
+        android:gravity="center" />
 
 
-    </RelativeLayout>
 </LinearLayout>
