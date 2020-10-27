@@ -208,19 +208,18 @@ public class MainActivity extends AppCompatActivity {
     private void openAnswerScreen(String message, String caller) { // opens the fragment screen
 
         try {
-//            if (message.contains(getString(R.string.video_message_id))) {
-            if (fragmentManager.getBackStackEntryCount() == 0) {
+            if (message.contains(getString(R.string.video_message_id))) {
                 AnsweringFragment fragment = AnsweringFragment.newInstance(caller);
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.add(R.id.fragment, fragment, "calling");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            } else {
+                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
             }
-//            } else {
-//                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
-//            }
         } catch (Exception e) {
+            Log.i("UV", e.getMessage());
             Toast.makeText(this, "בעיה בפתיחת מסך צלצול", Toast.LENGTH_SHORT).show();
         }
     }
