@@ -16,6 +16,10 @@
         android:layout_height="match_parent">
 
         <TextClock
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="70sp"
+            android:autoSizeMaxTextSize="120sp"
+            android:autoSizeStepGranularity="2sp"
             android:fontFamily="@font/rubik"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
@@ -23,7 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:textStyle="bold"
-            android:textSize="130sp"
             android:textColor="@color/text_color"
             android:id="@+id/clock" />
 

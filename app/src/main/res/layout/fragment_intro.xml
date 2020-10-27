@@ -13,11 +13,14 @@
         android:layout_height="0dp" />
 
     <RelativeLayout
+        android:id="@+id/dots_layout"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-        <ImageButton
+        <Button
+            android:textColor="@color/red"
+            android:text="@string/back"
             android:padding="6dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/arrow_blue_back"
@@ -73,7 +76,9 @@
 
         </LinearLayout>
 
-        <ImageButton
+        <Button
+            android:textColor="@color/text_color"
+            android:text="@string/next"
             android:padding="6dp"
             android:src="@drawable/arrow_blue"
             android:background="@android:color/transparent"
@@ -83,7 +88,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
-        <ImageButton
+        <Button
+            android:textColor="@color/green"
+            android:text="@string/finish"
             android:padding="6dp"
             android:src="@drawable/arrow_blue"
             android:background="@android:color/transparent"

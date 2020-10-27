@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -21,9 +22,10 @@ import static android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS;
 
 public class IntroFragment extends Fragment {
 
-    ImageButton backButton, continueButton, finishButton;
+    Button backButton, continueButton, finishButton;
     ImageView dot0, dot1, dot2, dot3, dot00;
     FrameLayout includeLayout;
+    RelativeLayout dotsLayout;
 
     LayoutInflater inflater;
 
@@ -61,6 +63,7 @@ public class IntroFragment extends Fragment {
         continueButton = v.findViewById(R.id.continue_button);
         finishButton = v.findViewById(R.id.finish_button);
         includeLayout = v.findViewById(R.id.include_holder);
+        dotsLayout = v.findViewById(R.id.dots_layout);
 
         dot00 = v.findViewById(R.id.dot_00);
         dot0 = v.findViewById(R.id.dot_0);
@@ -98,6 +101,8 @@ public class IntroFragment extends Fragment {
                 continueButton.setVisibility(View.VISIBLE);
                 finishButton.setVisibility(View.INVISIBLE);
 
+                dotsLayout.setBackgroundColor(getContext().getColor(R.color.blue_background));
+
                 layoutInflater(inflater, R.layout.intro_00);
                 changeDotPosition(pageCounter);
 
@@ -107,6 +112,8 @@ public class IntroFragment extends Fragment {
                 backButton.setVisibility(View.VISIBLE);
                 continueButton.setVisibility(View.VISIBLE);
                 finishButton.setVisibility(View.INVISIBLE);
+
+                dotsLayout.setBackgroundColor(getContext().getColor(R.color.background_color));
 
                 layoutInflater(inflater, R.layout.intro_0);
                 changeDotPosition(pageCounter);

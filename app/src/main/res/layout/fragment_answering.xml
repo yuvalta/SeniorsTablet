@@ -20,10 +20,10 @@
 
         <TextView
             android:fontFamily="@font/rubik"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="12sp"
-            app:autoSizeMaxTextSize="70dp"
-            app:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="70dp"
+            android:autoSizeStepGranularity="2sp"
             android:id="@+id/calling_fixed_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

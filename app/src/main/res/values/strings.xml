@@ -3,15 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="video_message_id">שיחת וידאו נכנסת</string>
+    <string name="next">next</string>
+    <string name="finish">connect 😘</string>
+    <string name="back">back</string>
     <string name="whos_calling">%s מצלצל...</string>
-    <string name="enable_permissions">במסך שנפתח,אשרו קריאת הודעות ע\"י האפליקציה</string>
-    <string name="accept">לחצו על \"קבל\" - האפליקציה אך ורק רואה התראות של שיחות וידאו</string>
+    <string name="enable_permissions">לאחר סיום המדריך, יפתח מסך. אנא אשרו קריאת הודעות ע\"י האפליקציה</string>
+    <string name="accept">לחצו על \"אישור\" - לא לדאוג, האפליקציה רואה אך ורק התראות של שיחות וידאו</string>
     <string name="red_led_explain">נורה אדומה מהבהבת מסמלת שהאפליקציה מתחברת לשירות ההתראות של WhatsApp</string>
     <string name="green_led_explain">נורה ירוקה מסמלת שהכל תקין</string>
     <string name="title_activity_whos_calling">WhosCallingActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+
 </resources>
