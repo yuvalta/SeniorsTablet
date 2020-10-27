@@ -216,11 +216,11 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             } else {
-                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "התראה שהיא לא וידאו", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             Log.i("UV", e.getMessage());
-            Toast.makeText(this, "בעיה בפתיחת מסך צלצול", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "בעיה בפתיחת מסך צלצול", Toast.LENGTH_SHORT).show();
         }
     }
 
