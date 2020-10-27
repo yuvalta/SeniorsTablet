@@ -85,12 +85,12 @@ public class AnsweringFragment extends Fragment {
     }
 
 
-    private void performClick() {
+    private void performClick(int ID) {
         try {
             Notification notification = ShareDataSingleton.getInstance().getNotification();
             if (notification != null) {
                 if (notification.actions != null) {
-                    notification.actions[1].actionIntent.send();
+                    notification.actions[ID].actionIntent.send();
                 }
             } else {
                 Toast.makeText(getContext(), "אין התראה", Toast.LENGTH_SHORT).show();
@@ -124,14 +124,14 @@ public class AnsweringFragment extends Fragment {
     View.OnClickListener answerClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            performClick();
+            performClick(1);
         }
     };
 
     View.OnClickListener declineClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            closeFragment();
+            performClick(0);
         }
     };
 
