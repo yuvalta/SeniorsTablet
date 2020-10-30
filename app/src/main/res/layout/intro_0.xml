@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:elevation="15dp"
-        android:background="@color/blue_background"
+        android:background="@color/red"
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp">

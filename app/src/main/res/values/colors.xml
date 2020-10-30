@@ -10,4 +10,5 @@
     <color name="blue">#03A9F4</color>
     <color name="blue_background">#1FA9FF</color>
     <color name="orange_background">#FDC666</color>
+    <color name="red_background">#F44336</color>
 </resources>
