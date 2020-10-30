@@ -1,6 +1,8 @@
 package com.example.seniortablet;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import static android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS;
 
@@ -28,6 +32,8 @@ public class IntroFragment extends Fragment {
     RelativeLayout dotsLayout;
 
     LayoutInflater inflater;
+
+    SharedPreferences trialSharedPref;
 
     int pageCounter;
 
@@ -50,7 +56,19 @@ public class IntroFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setStartDateForTrial();
+
         pageCounter = 0;
+    }
+
+    private void setStartDateForTrial() {
+        long startEpochTime = System.currentTimeMillis()/1000;
+
+        trialSharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = trialSharedPref.edit();
+        editor.putLong(getString(R.string.start_date), startEpochTime);
+        editor.apply();
     }
 
     @Override

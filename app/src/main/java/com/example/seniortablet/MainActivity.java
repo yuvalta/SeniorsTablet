@@ -1,10 +1,14 @@
 package com.example.seniortablet;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +27,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     ImageView connectionIndicator;
     Animation animation;
+
+    long SEVEN_DAYS = 60 * 60 * 24 * 7;
 
     boolean inIntro = true;
 
@@ -66,10 +74,6 @@ public class MainActivity extends AppCompatActivity {
 //        registerBroadcastForTime();
 
         setLocalBroadcasts();
-
-//        openInstructionsForPremission();
-
-//        openAnswerScreen("", "יובל");
     }
 
     @Override
@@ -81,6 +85,38 @@ public class MainActivity extends AppCompatActivity {
 
         }
         inIntro = false;
+
+        checkDaysForTrialVersion();
+    }
+
+    private boolean checkDaysForTrialVersion() {
+
+        SharedPreferences trialSharedPref = getPreferences(Context.MODE_PRIVATE);
+
+        long beginningEpoch = trialSharedPref.getLong(getString(R.string.start_date), 0);
+        long currentEpoch = System.currentTimeMillis() / 1000;
+
+        if (currentEpoch == 0) {
+            Log.i("UV", "Error in shared preferences get -> start epoch didn't saved, save today date as beginning");
+
+            SharedPreferences.Editor editor = trialSharedPref.edit();
+            editor.putLong(getString(R.string.start_date), currentEpoch);
+            editor.apply();
+        }
+
+        Log.i("UV", "beginning - " + beginningEpoch);
+        Log.i("UV", "currentEpoch - " + currentEpoch);
+
+
+        if (currentEpoch - beginningEpoch < SEVEN_DAYS) { // if the difference bigger then 7 days
+            PayDialog alertDialog = new PayDialog(MainActivity.this, false, null);
+            alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            alertDialog.show();
+
+
+
+        }
+        return true;
     }
 
     private void openInstructionsForPremission() {

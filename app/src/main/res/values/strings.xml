@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Connect</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="video_message_id">שיחת וידאו נכנסת</string>
     <string name="next">next</string>
     <string name="finish">connect 😘</string>
@@ -12,5 +10,8 @@
     <string name="red_led_explain">נורה אדומה מהבהבת מסמלת שהאפליקציה מתחברת לשירות ההתראות של WhatsApp</string>
     <string name="green_led_explain">נורה ירוקה מסמלת שהכל תקין</string>
     <string name="title_activity_whos_calling">WhosCallingActivity</string>
+    <string name="start_date">start_day_epoch</string>
+    <string name="pay">Continue for payment</string>
+    <string name="exit_app">Exit app</string>
 
 </resources>
