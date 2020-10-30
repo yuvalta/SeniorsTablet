@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     ImageView connectionIndicator;
     Animation animation;
+    SharedPreferences trialSharedPref;
 
     long SEVEN_DAYS = 60 * 60 * 24 * 7;
 
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        trialSharedPref = getPreferences(Context.MODE_PRIVATE);
 
         animation = new AlphaAnimation(1, 0);
         mainBackground = findViewById(R.id.main_background);
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         setDateAndBackground();
 
-//        registerBroadcastForTime();
+        registerBroadcastForTime();
 
         setLocalBroadcasts();
     }
@@ -89,10 +92,7 @@ public class MainActivity extends AppCompatActivity {
         checkDaysForTrialVersion();
     }
 
-    private boolean checkDaysForTrialVersion() {
-
-        SharedPreferences trialSharedPref = getPreferences(Context.MODE_PRIVATE);
-
+    private void checkDaysForTrialVersion() {
         long beginningEpoch = trialSharedPref.getLong(getString(R.string.start_date), 0);
         long currentEpoch = System.currentTimeMillis() / 1000;
 
@@ -108,15 +108,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i("UV", "currentEpoch - " + currentEpoch);
 
 
-        if (currentEpoch - beginningEpoch < SEVEN_DAYS) { // if the difference bigger then 7 days
+        if (currentEpoch - beginningEpoch > SEVEN_DAYS) { // if the difference bigger then 7 days
             PayDialog alertDialog = new PayDialog(MainActivity.this, false, null);
             alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             alertDialog.show();
 
-
-
         }
-        return true;
     }
 
     private void openInstructionsForPremission() {
@@ -178,8 +175,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context ctx, Intent intent) {
                 if (intent.getAction().compareTo(Intent.ACTION_TIME_TICK) == 0) {
-                    changeIndicator(true);
-                    stopBlinkingAnimation();
+
+                    checkDaysForTrialVersion();
+
                 }
             }
         };
