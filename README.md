@@ -40,9 +40,10 @@ The app need to run on **Physical** Android device, with *Whatsapp* working on i
 After the Onboarding screens, the setting screen will open and you will need to allow the app to listen to WhatsApp notifications (listen only to the **kind** of messages - text, video call or regular call, not the content!).
 After allowing this permission, you can start accepting video calls.
 
-About me -
+## About me -
 My name is Yuval, CS student from Haifa Univ., graduating at the end of this semester (February).
 I have 3 years of experience in Android development - 1.5 years from my recent job (you can see it in my [Linkedin profile](https://www.linkedin.com/in/yuvaltamir/)) and 1.5 years from many many personal projects.
-I have a strong passion for developing mobile apps (Android and cross platform - Flutter), and I'm looking for a junior position after graduating (in February - wow it's very close 🥳).
+I have a strong passion for developing mobile apps (Android and cross platform - Flutter),
+and I'm looking for a junior position after graduating (in February - wow it's very close 🥳).
 I really enjoyed working on this *Connect* project, and hope that you will also like it.
 ### Thanks, Yuval
