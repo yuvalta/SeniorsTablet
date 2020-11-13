@@ -1,4 +1,4 @@
-# Connect  👦📱👵 ---- testers explains, below :)
+# Connect  👦📱👵 ---- testers explainaiton, below :)
 
  During the COVID-19 pandemic 🦠, many people was stuck in their homes, ALONE - Especially, our grandparents.
 One way to keep in touch with our families and friends - WhatsApp video calls! 📹
