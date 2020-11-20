@@ -11,7 +11,7 @@ One way to keep in touch with our families and friends - WhatsApp video calls! �
 
 ### but... how does it work?
 simple!
-First, open your drawer, and take one of your on smartphone (we all know that you have **few** like this😜),  
+First, open your drawer, and take one of your old smartphone (we all know that you have **few** like this😜),  
 install *Connect* and place the smartphone in your grandparents home.
 
 And than, 3 steps:
