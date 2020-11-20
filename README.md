@@ -1,6 +1,6 @@
 # Connect  👦📱👵 ---- testers explainaiton, below :)
 
- During the COVID-19 pandemic 🦠, many people was stuck in their homes, ALONE - Especially, our grandparents.
+ During the COVID-19 pandemic 🦠, many people was stuck in their homes, ALONE - Especially, our grandparents.  
 One way to keep in touch with our families and friends - WhatsApp video calls! 📹  
  Most of the seniors don't have a smartphone or a tablet to communicate with their families with video calls.  
  Even if they have a smartphone, it is very difficult for them to use this video calls feature.
@@ -10,7 +10,7 @@ One way to keep in touch with our families and friends - WhatsApp video calls! �
  *Connet* is an app (for all android devices!) that has only one purpose - making the video call procedure simple, **extremely easy** and accessible! ✌️
 
 ### but... how does it work?
-simple!
+simple!  
 First, open your drawer, and take one of your old smartphone (we all know that you have **few** like this😜),  
 install *Connect* and place the smartphone in your grandparents home.
 
